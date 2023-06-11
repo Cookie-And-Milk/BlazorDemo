@@ -1,0 +1,22 @@
+﻿@page "/form"
+@using Microsoft.Extensions.Logging
+@inject ILogger<Form> Logger
+
+<h1>Form</h1>
+
+<EditForm Model = "@people" OnSubmit="@HandleSubmit">
+    <InputText id = "name" @bind-Value = "people.Name" />
+
+    <button type = "submit">Submit</button>
+</EditForm>
+
+@code {
+    private People people = new();
+
+    
+    // TO DO 
+    private void HandleSubmit()
+    {
+        Logger.LogInformation("HandleSubmit called"); 
+    }
+}
