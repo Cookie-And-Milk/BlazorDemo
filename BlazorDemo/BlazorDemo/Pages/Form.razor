@@ -1,22 +1,33 @@
 ﻿@page "/form"
 @using Microsoft.Extensions.Logging
 @inject ILogger<Form> Logger
+@inject NavigationManager Navigation
+
+<PageTitle>Form</PageTitle>
 
 <h1>Form</h1>
 
 <EditForm Model = "@people" OnSubmit="@HandleSubmit">
+    <p>Name: </p>
     <InputText id = "name" @bind-Value = "people.Name" />
 
     <button type = "submit">Submit</button>
 </EditForm>
 
+<!-- <button type="button" @onclick = "GoToResult">Result</button> -->
+
 @code {
     private People people = new();
 
-    
     // TO DO 
     private void HandleSubmit()
     {
         Logger.LogInformation("HandleSubmit called"); 
+        Navigation.NavigateTo("result"); 
     }
+
+    /*private void GoToResult()
+    {
+        Navigation.NavigateTo("result"); 
+    }*/ 
 }
