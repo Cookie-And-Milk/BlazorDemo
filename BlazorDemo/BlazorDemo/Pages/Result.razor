@@ -1,0 +1,16 @@
+﻿@page "/result"
+@inject StateContianer sc
+
+<h1>Result</h1>
+<p>Name: @people.Name</p>
+<p>Age: @people.Age</p>
+<p>Email Address: @people.Email</p>
+
+@code {
+    private People people;
+    protected override void OnInitialized()
+    {
+        base.OnInitialized();
+        people = sc.Value; 
+    }
+}

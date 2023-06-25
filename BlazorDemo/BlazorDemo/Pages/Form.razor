@@ -1,11 +1,29 @@
 ﻿@page "/form"
 @using Microsoft.Extensions.Logging
 @inject ILogger<Form> Logger
+@inject NavigationManager nm
+@inject StateContianer sc
 
 <h1>Form</h1>
 
 <EditForm Model = "@people" OnSubmit="@HandleSubmit">
-    <InputText id = "name" @bind-Value = "people.Name" />
+    <DataAnnotationsValidator />
+    <ValidationSummary />
+
+    <p>
+        <label>
+            Name: <InputText id="name" @bind-Value="people.Name" />
+        </label>
+        <label>
+            Age: <InputNumber id="age" @bind-Value = "people.Age" />
+        </label>
+    </p>
+
+    <p>
+        <label>
+            Email Address: <InputText id="emailAddress" @bind-Value = "people.Email" />
+        </label>
+    </p>
 
     <button type = "submit">Submit</button>
 </EditForm>
@@ -13,10 +31,11 @@
 @code {
     private People people = new();
 
-    
     // TO DO 
     private void HandleSubmit()
     {
-        Logger.LogInformation("HandleSubmit called"); 
+        Logger.LogInformation("HandleSubmit called");
+        sc.SetValue(people); 
+        nm.NavigateTo("result"); 
     }
 }
