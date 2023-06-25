@@ -25,8 +25,13 @@
         </label>
     </p>
 
+    <p>Age: </p>
+    <InputNumber id = "age" @bind-Value = "people.Age"></InputNumber>
+
     <button type = "submit">Submit</button>
 </EditForm>
+
+<!-- <button type="button" @onclick = "GoToResult">Result</button> -->
 
 @code {
     private People people = new();
@@ -38,4 +43,9 @@
         sc.SetValue(people); 
         nm.NavigateTo("result"); 
     }
+
+    /*private void GoToResult()
+    {
+        Navigation.NavigateTo("result"); 
+    }*/ 
 }
