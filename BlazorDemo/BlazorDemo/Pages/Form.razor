@@ -43,6 +43,7 @@
     private void HandleSubmit()
     {
         Logger.LogInformation("HandleSubmit called");
+        people.CreationDateTime = DateTime.Now; 
         sc.SetValue(people); 
         nm.NavigateTo("result"); 
     }
