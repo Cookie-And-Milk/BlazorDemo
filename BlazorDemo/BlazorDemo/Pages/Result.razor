@@ -2,9 +2,10 @@
 @inject StateContianer sc
 
 <h1>Result</h1>
+
 <p>Name: @people.Name</p>
-<p>Age: @people.Age</p>
-<p>Title: @people.Title</p>
+<p>Age: @CheckAge()</p>
+<p>Title: @CheckTitle()</p>
 <p>Email Address: @people.Email</p>
 <p>Phone number: @people.PhoneNum</p>
 <p>Time of Creation: @people.CreationDateTime</p>
@@ -38,5 +39,30 @@
     {
         base.OnInitialized();
         people = sc.Value; 
+    }
+
+    private string CheckAge()
+    {
+        if (people.Age == null)
+        {
+            return "Not specified. ";
+        }
+        else
+        {
+            int? age = people.Age; 
+            return age.ToString();     
+        }
+    }
+
+    private string CheckTitle()
+    {
+        if (people.Title == null)
+        {
+            return "Not specified. ";
+        }
+        else
+        {
+            return people.Title; 
+        }
     }
 }
