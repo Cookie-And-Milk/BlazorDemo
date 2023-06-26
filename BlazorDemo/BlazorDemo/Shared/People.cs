@@ -13,8 +13,9 @@ namespace BlazorDemo.Shared
         public string? Email { get; set; }
         [Required]
         [MaxLength(14, ErrorMessage = "Exceeding maximum length. ")]
-        [RegularExpression(@"^\+[0-9]+", ErrorMessage = "Phone number cannot contain special characters or letters, apart from +. ")]
+        [RegularExpression(@"^\+?[0-9]+", ErrorMessage = "Phone number cannot contain special characters or letters, apart from +. ")]
         public string? PhoneNum { get; set; }
+        public DateTime CreationDateTime { get; set; } 
 
     }
 }
