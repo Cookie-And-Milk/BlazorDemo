@@ -8,6 +8,7 @@ namespace BlazorDemo.Shared
         [RegularExpression(@"^[a-zA-Z\s]{2,}$", ErrorMessage = "Name cannot contain numbers or special characters. ")]
         public string? Name { get; set; }
         public int? Age { get; set; }
+        public string Title { get; set; }
         [Required]
         [EmailAddress]
         public string? Email { get; set; }

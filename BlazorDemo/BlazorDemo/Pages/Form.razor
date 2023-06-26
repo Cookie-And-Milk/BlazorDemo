@@ -17,6 +17,14 @@
         <label>
             Age: <InputNumber id="age" @bind-Value = "people.Age" />
         </label>
+        <label>
+            Title: <InputSelect id="title" @bind-Value = "people.Title">
+                <option value="">Select a title</option>
+                <option value="Mr.">Mr.</option>
+                <option value="Mrs.">Mrs.</option>
+                <option value="Ms.">Ms.</option>
+            </InputSelect>
+        </label>
     </p>
 
     <p>
