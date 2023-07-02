@@ -1,0 +1,80 @@
+﻿@page "/data-binding"
+@using System.Globalization
+
+<h1>DataBinding</h1>
+
+<p>One-way data binding example: @creationDate</p>
+
+<p>
+    Two-way data binding example: 
+    <input type="text" @bind:get="name" @bind:set="(value) => {name = value; }" />
+</p>
+
+<p>Your input is: @name</p>
+
+<p>
+    <label>
+        Select one of the following options: 
+        <select @onchange="SelectedOptionChanged" >
+            <option value=""></option>
+            <option value="Opt1">Option1</option>
+            <option value="Opt2">Option2</option>
+            <option value="Opt3">Option3</option>
+            <option value="Opt4">Option4</option>
+        </select>
+    </label>
+</p>
+
+<p>
+    You should put a integer value here: 
+    <input type="number" @bind:get="num" @bind:set="(value) => {num = value; }" />
+</p>
+
+<p> 
+    <label>
+        The following date will be using the year-month-day format: 
+        <input @bind="inputDate" @bind:format="yyyy-MM-dd" />
+    </label>
+</p>
+
+<p>
+    <label>
+        input value: 
+        <input @bind="currency" />
+    </label>
+</p>
+
+<p>
+    Your input will be treated as a currency amount: @Currency
+</p>
+
+@code {
+    private DateOnly creationDate = new DateOnly(2023, 7, 1);
+    private DateOnly inputDate = new DateOnly(1970, 1, 1);
+    private string name = ""; 
+    private string[] SelectedOption { get; set; } = new string[] { };
+    private int num; 
+    private decimal currency = 1.2M; 
+    private NumberStyles style = NumberStyles.AllowDecimalPoint; 
+
+    private void SelectedOptionChanged(ChangeEventArgs e)
+    {
+        if (e.Value != null)
+        {
+            SelectedOption = (string[])e.Value;     
+        }
+    }
+
+    private string Currency
+    {
+        get => currency.ToString("C", CultureInfo.CurrentCulture);    
+
+        set
+        {
+            if (Decimal.TryParse(value, style, CultureInfo.CurrentCulture, out var number))
+            {
+                currency = Math.Round(number, 2);     
+            }
+        }
+    }
+}
