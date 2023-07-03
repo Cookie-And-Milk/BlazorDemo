@@ -1,0 +1,13 @@
+﻿@page "/child-component"
+
+<h3>Child component is active</h3>
+
+<DataBinding @bind-CParam="var"></DataBinding>
+
+<p>Your intput is: @var</p>
+
+@code {
+    //note: this component is suffering from an unintended value overwrite 
+
+    private string? var; 
+}

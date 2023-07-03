@@ -1,0 +1,15 @@
+﻿@page "/child-cascading-parameter"
+
+<h3>Child Cascading Parameter</h3>
+
+<p>Your first input is: @Input</p>
+
+<p>Your second input is: @Input1</p>
+
+@code {
+    [CascadingParameter(Name = "Input")]
+    private string? Input { get; set; }
+
+    [CascadingParameter(Name = "Input1")]
+    private string? Input1 { get; set; }
+}

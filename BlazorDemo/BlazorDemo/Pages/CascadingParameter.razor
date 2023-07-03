@@ -1,0 +1,28 @@
+﻿@page "/cascading-parameters"
+
+<h1>Ancestor Component</h1>
+
+<p>
+    <label>
+        Input #1:
+        <input @bind="Input" />
+    </label>
+</p>
+
+<p>
+    <label>
+        Input #2: 
+        <input @bind="Input1" />
+    </label>
+</p>
+
+<CascadingValue Value="Input" Name="Input">
+    <CascadingValue Value="Input1" Name="Input1">
+        <ChildCascadingParameter />
+    </CascadingValue>
+</CascadingValue>
+
+@code {
+    public string? Input { get; set; } 
+    public string? Input1 { get; set; }
+}
