@@ -1,0 +1,19 @@
+﻿@page "/component-parameter"
+
+<h1>Component Parameter Sample</h1>
+
+<input @bind="Input" />
+
+<ComponentParameterChild Input="@Input" />
+
+<Expander Expanded="true">
+    Expander 1 content
+</Expander>
+
+<Expander Expanded="true" />
+
+<button @onclick="StateHasChanged">Call StateHasChanged</button>
+
+@code {
+    private string? Input { get; set; }
+}
