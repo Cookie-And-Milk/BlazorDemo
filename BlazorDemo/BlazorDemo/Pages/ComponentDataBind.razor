@@ -1,0 +1,22 @@
+﻿@page "/component-data-bind"
+
+<h3>Data binding across two components example: </h3>
+
+<input @oninput="OnInputChanged" value="@input" />
+
+@code {
+    private string? input = "Default"; 
+
+    [Parameter]
+    public string? Input { get; set; }
+
+    [Parameter]
+    public EventCallback<string> InputChanged { get; set; }
+
+    private async Task OnInputChanged(ChangeEventArgs e)
+    {
+        input = e?.Value?.ToString();
+
+        await InputChanged.InvokeAsync(input); 
+    }
+}

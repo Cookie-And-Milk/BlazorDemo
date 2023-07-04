@@ -49,14 +49,12 @@
     Your input will be treated as a currency amount: @Currency
 </p>
 
+<ComponentDataBind @bind-Input="input" />
+
 <p>
-    <label>
-        The following input will get passed to another component: 
-        <input @onchange="OnCParamChange" value="cparam"/>
-    </label>
+    Your input is: @input
 </p>
 
-<button @onclick = "ShowChildComponent">Show Child Component</button>
 
 @code {
     private DateOnly creationDate = new DateOnly(2023, 7, 1);
@@ -66,23 +64,7 @@
     private int num; 
     private decimal currency = 1.2M; 
     private NumberStyles style = NumberStyles.AllowDecimalPoint; 
-
-    private string cparam = ""; 
-    [Parameter]
-    public string? CParam { get; set; }
-    [Parameter]
-    public EventCallback<string> CParamChanged { get; set; }
-
-    private async Task OnCParamChange(ChangeEventArgs e)
-    {
-        cparam = e.Value.ToString();
-        await CParamChanged.InvokeAsync(cparam); 
-    }
-
-    private void ShowChildComponent()
-    {
-         nm.NavigateTo("child-component");    
-    }
+    private string input; 
 
     private void SelectedOptionChanged(ChangeEventArgs e)
     {
