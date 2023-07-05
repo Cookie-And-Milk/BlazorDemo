@@ -39,6 +39,10 @@
 </p>
 
 <p>
+    Your date is: @inputDate<!--.ToString("yyyy-MM-dd")-->
+</p>
+
+<p>
     <label>
         input value: 
         <input @bind="currency" />
@@ -54,7 +58,6 @@
 <p>
     Your input is: @input
 </p>
-
 
 @code {
     private DateOnly creationDate = new DateOnly(2023, 7, 1);
@@ -72,7 +75,7 @@
         {
             SelectedOption = (string[])e.Value;     
         }
-    }
+    } 
 
     private string Currency
     {
@@ -85,5 +88,5 @@
                 currency = Math.Round(number, 2);     
             }
         }
-    }
+    } 
 }
