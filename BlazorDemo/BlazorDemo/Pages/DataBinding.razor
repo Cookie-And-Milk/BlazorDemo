@@ -1,7 +1,8 @@
 ﻿@page "/data-binding"
 @using System.Globalization
+@inject NavigationManager nm
 
-<h1>DataBinding</h1>
+<h1>DataBinding Examples</h1>
 
 <p>One-way data binding example: @creationDate</p>
 
@@ -38,6 +39,10 @@
 </p>
 
 <p>
+    Your date is: @inputDate<!--.ToString("yyyy-MM-dd")-->
+</p>
+
+<p>
     <label>
         input value: 
         <input @bind="currency" />
@@ -48,6 +53,12 @@
     Your input will be treated as a currency amount: @Currency
 </p>
 
+<ComponentDataBind @bind-Input="input" />
+
+<p>
+    Your input is: @input
+</p>
+
 @code {
     private DateOnly creationDate = new DateOnly(2023, 7, 1);
     private DateOnly inputDate = new DateOnly(1970, 1, 1);
@@ -56,6 +67,7 @@
     private int num; 
     private decimal currency = 1.2M; 
     private NumberStyles style = NumberStyles.AllowDecimalPoint; 
+    private string input; 
 
     private void SelectedOptionChanged(ChangeEventArgs e)
     {
@@ -63,7 +75,7 @@
         {
             SelectedOption = (string[])e.Value;     
         }
-    }
+    } 
 
     private string Currency
     {
@@ -76,5 +88,5 @@
                 currency = Math.Round(number, 2);     
             }
         }
-    }
+    } 
 }
