@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!--
+https://go.microsoft.com/fwlink/?LinkID=208121.
+-->
+<Project>
+  <PropertyGroup>
+    <_PublishTargetUrl>C:\则灵的文件\BlazorDemo\BlazorDemo\BlazorDemo\BlazorDemo\bin\Release\net7.0\browser-wasm\publish\</_PublishTargetUrl>
+    <History>True|2024-06-23T07:09:37.4950916Z;</History>
+    <LastFailureDetails />
+  </PropertyGroup>
+</Project>

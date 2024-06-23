@@ -1,0 +1,1 @@
+C:\则灵的文件\BlazorDemo\BlazorDemo\BlazorDemo\BlazorDemo\obj\Release\net7.0\browser-wasm\PubTmp\Out\web.config
